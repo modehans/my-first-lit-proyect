@@ -12,5 +12,8 @@
   "license": "ISC",
   "devDependencies": {
     "@web/dev-server": "^0.1.35"
+  },
+  "dependencies": {
+    "lit": "^2.4.1"
   }
 }
