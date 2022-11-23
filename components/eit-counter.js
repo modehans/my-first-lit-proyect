@@ -4,9 +4,7 @@ export class EitCounter extends LitElement {
   static styles = [
     css`
       :host {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+        display: inline-block;
       }
       h2 {
         color: purple;
@@ -28,11 +26,16 @@ export class EitCounter extends LitElement {
   render() {
     return html`<slot></slot>
       <p>Parace que esto funciona bien ${this.counter}</p>
+      <button @click=${this.decrement}>-1</button>
       <button @click=${this.increment}>+1</button>`;
   }
 
   increment() {
     this.counter++;
+  }
+
+  decrement() {
+    this.counter--;
   }
 }
 customElements.define('eit-counter', EitCounter);
