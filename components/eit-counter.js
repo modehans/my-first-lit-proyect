@@ -5,9 +5,12 @@ export class EitCounter extends LitElement {
     css`
       :host {
         display: inline-block;
+        padding: 1rem;
+        font-family: verdana;
       }
-      h2 {
+      p {
         color: purple;
+        font-size: 1.5rem;
       }
     `,
   ];
@@ -15,6 +18,7 @@ export class EitCounter extends LitElement {
   static properties = {
     counter: {
       type: Number,
+      reflect: true,
     },
   };
 
@@ -25,7 +29,7 @@ export class EitCounter extends LitElement {
 
   render() {
     return html`<slot></slot>
-      <p>Parace que esto funciona bien ${this.counter}</p>
+      <p>${this.counter}</p>
       <button @click=${this.decrement}>-1</button>
       <button @click=${this.increment}>+1</button>`;
   }
