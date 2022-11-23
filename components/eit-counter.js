@@ -27,7 +27,12 @@ export class EitCounter extends LitElement {
 
   render() {
     return html`<slot></slot>
-      <p>Parace que esto funciona bien ${this.counter}</p> `;
+      <p>Parace que esto funciona bien ${this.counter}</p>
+      <button @click=${this.increment}>+1</button>`;
+  }
+
+  increment() {
+    this.counter++;
   }
 }
 customElements.define('eit-counter', EitCounter);
