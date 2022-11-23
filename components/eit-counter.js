@@ -8,9 +8,12 @@ export class EitCounter extends LitElement {
         padding: 1rem;
         font-family: verdana;
       }
-      p {
+      .parrafo {
         color: purple;
         font-size: 1.5rem;
+      }
+      input {
+        width: 30px;
       }
     `,
   ];
@@ -29,17 +32,22 @@ export class EitCounter extends LitElement {
 
   render() {
     return html`<slot></slot>
-      <p>${this.counter}</p>
-      <button @click=${this.decrement}>-1</button>
-      <button @click=${this.increment}>+1</button>`;
+      <p class="parrafo">${this.counter}</p>
+      <p>
+        <input id="quantity" type="number" value="1" />
+      </p>
+      <button @click=${this.decrement}>-</button>
+      <button @click=${this.increment}>+</button> `;
   }
 
   increment() {
-    this.counter++;
+    let quantity = this.shadowRoot.getElementById('quantity').value;
+    this.counter += parseInt(quantity);
   }
 
   decrement() {
-    this.counter--;
+    let quantity = this.shadowRoot.getElementById('quantity').value;
+    this.counter -= parseInt(quantity);
   }
 }
 customElements.define('eit-counter', EitCounter);
