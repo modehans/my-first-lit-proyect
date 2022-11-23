@@ -40,14 +40,16 @@ export class EitCounter extends LitElement {
       <button @click=${this.increment}>+</button> `;
   }
 
+  get quantity() {
+    return this.shadowRoot.getElementById('quantity').value;
+  }
+
   increment() {
-    let quantity = this.shadowRoot.getElementById('quantity').value;
-    this.counter += parseInt(quantity);
+    this.counter += parseInt(this.quantity);
   }
 
   decrement() {
-    let quantity = this.shadowRoot.getElementById('quantity').value;
-    this.counter -= parseInt(quantity);
+    this.counter -= parseInt(this.quantity);
   }
 }
 customElements.define('eit-counter', EitCounter);
