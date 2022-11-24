@@ -29,6 +29,10 @@ export class EitCounter extends LitElement {
       wired-button {
         background-color: plum;
       }
+      wired-slider {
+        --wired-slider-knob-color: plum;
+        --wired-slider-bar-color: purple;
+      }
     `,
   ];
 
@@ -58,7 +62,7 @@ export class EitCounter extends LitElement {
         </p>
         <wired-slider
           value="10"
-          min="1"
+          min="0"
           max="20"
           @change=${this.doChangeQuantity}
         ></wired-slider>
