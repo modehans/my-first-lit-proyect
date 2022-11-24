@@ -37,8 +37,8 @@ export class EitCounter extends LitElement {
       <p>
         <input id="quantity" type="number" value="1" />
       </p>
-      <button @click=${this.decrement}>-</button>
-      <button @click=${this.increment}>+</button> `;
+      <wired-button @click=${this.decrement}>Decrementar</wired-button>
+      <wired-button @click=${this.increment}>Incrementar</wired-button> `;
   }
 
   get quantity() {
