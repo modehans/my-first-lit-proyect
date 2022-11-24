@@ -1,4 +1,5 @@
 import { LitElement, html, css } from 'lit';
+import { WiredButton } from 'wired-elements/lib/wired-button.js';
 
 export class EitCounter extends LitElement {
   static styles = [
