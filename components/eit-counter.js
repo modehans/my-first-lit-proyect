@@ -19,7 +19,7 @@ export class EitCounter extends LitElement {
         font-size: 1.5rem;
       }
       wired-input {
-        width: 50px;
+        width: 80px;
         font-size: 1.5rem;
         padding: 0.5rem;
       }
@@ -37,11 +37,13 @@ export class EitCounter extends LitElement {
       type: Number,
       reflect: true,
     },
+    quantity: { type: Number },
   };
 
   constructor() {
     super();
     this.counter = 0;
+    this.quantity = 10;
   }
 
   render() {
@@ -50,9 +52,16 @@ export class EitCounter extends LitElement {
         <slot></slot>
         <p class="parrafo">${this.counter}</p>
         <p>
-          <wired-input id="quantity" type="number" value="1"> ></wired-input>
+          <wired-input id="quantity" type="number" .value=${this.quantity}>
+            ></wired-input
+          >
         </p>
-        <wired-slider value="10" min="5" max="15"></wired-slider>
+        <wired-slider
+          value="10"
+          min="1"
+          max="20"
+          @change=${this.doChangeQuantity}
+        ></wired-slider>
         <wired-button class="decrement" @click=${this.decrement}>
           Decrementar
         </wired-button>
@@ -61,8 +70,12 @@ export class EitCounter extends LitElement {
     `;
   }
 
-  get quantity() {
+  /*  get quantity() {
     return this.shadowRoot.getElementById('quantity').value;
+  } */
+
+  doChangeQuantity(e) {
+    this.quantity = e.detail.value;
   }
 
   increment() {
