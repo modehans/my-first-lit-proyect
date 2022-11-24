@@ -1,5 +1,5 @@
 import { LitElement, html, css } from 'lit';
-import { WiredButton } from 'wired-elements/lib/wired-button.js';
+import { WiredButton, WiredCard } from 'wired-elements';
 
 export class EitCounter extends LitElement {
   static styles = [
@@ -18,6 +18,12 @@ export class EitCounter extends LitElement {
         font-size: 1.5rem;
         padding: 0.5rem;
       }
+      wired-button.decrement {
+        background-color: #ce4257;
+      }
+      wired-button {
+        background-color: plum;
+      }
     `,
   ];
 
@@ -34,13 +40,19 @@ export class EitCounter extends LitElement {
   }
 
   render() {
-    return html`<slot></slot>
-      <p class="parrafo">${this.counter}</p>
-      <p>
-        <input id="quantity" type="number" value="1" />
-      </p>
-      <wired-button @click=${this.decrement}>Decrementar</wired-button>
-      <wired-button @click=${this.increment}>Incrementar</wired-button> `;
+    return html`
+      <wired-card>
+        <slot></slot>
+        <p class="parrafo">${this.counter}</p>
+        <p>
+          <input id="quantity" type="number" value="1" />
+        </p>
+        <wired-button class="decrement" @click=${this.decrement}>
+          Decrementar
+        </wired-button>
+        <wired-button @click=${this.increment}>Incrementar</wired-button>
+      </wired-card>
+    `;
   }
 
   get quantity() {
