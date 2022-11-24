@@ -15,11 +15,16 @@
   <eit-counter counter="10">
     <h2>Contador!!!</h2>
   </eit-counter>
-  <eit-counter counter="20">
+  <eit-counter id="counter" counter="20">
     <h2>Segundo contador</h2>
   </eit-counter>
+  <button id="reset">Reset</button>
 
   <script src="./components/eit-counter.js" type="module"></script>
+  <script>document.getElementById('reset').addEventListener('click', function () {
+      document.getElementById('counter').counter = 0;
+    }
+    )</script>
 </body>
 
 </html>
