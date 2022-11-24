@@ -22,7 +22,7 @@ Run the command
 
 App built with:
 
-- [Lit](https://es.reactjs.org/)
+- [Lit](https://lit.dev/)
 - [Node](https://nodejs.org/es/)
 - [JavaScript](https://developer.mozilla.org/es/docs/Web/JavaScript)
 - [HTML5](https://developer.mozilla.org/en-US/docs/Glossary/HTML5)
