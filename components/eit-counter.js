@@ -1,5 +1,10 @@
 import { LitElement, html, css } from 'lit';
-import { WiredButton, WiredCard, WiredInput } from 'wired-elements';
+import {
+  WiredButton,
+  WiredCard,
+  WiredInput,
+  WiredSlider,
+} from 'wired-elements';
 
 export class EitCounter extends LitElement {
   static styles = [
@@ -47,7 +52,7 @@ export class EitCounter extends LitElement {
         <p>
           <wired-input id="quantity" type="number" value="1"> ></wired-input>
         </p>
-
+        <wired-slider value="10" min="5" max="15"></wired-slider>
         <wired-button class="decrement" @click=${this.decrement}>
           Decrementar
         </wired-button>
