@@ -8,13 +8,15 @@ export class EitCounter extends LitElement {
         display: inline-block;
         padding: 1rem;
         font-family: verdana;
+        color: purple;
       }
       .parrafo {
-        color: purple;
         font-size: 1.5rem;
       }
       input {
         width: 30px;
+        font-size: 1.5rem;
+        padding: 0.5rem;
       }
     `,
   ];
