@@ -1,5 +1,5 @@
 import { LitElement, html, css } from 'lit';
-import { WiredButton, WiredCard } from 'wired-elements';
+import { WiredButton, WiredCard, WiredInput } from 'wired-elements';
 
 export class EitCounter extends LitElement {
   static styles = [
@@ -13,8 +13,8 @@ export class EitCounter extends LitElement {
       .parrafo {
         font-size: 1.5rem;
       }
-      input {
-        width: 30px;
+      wired-input {
+        width: 50px;
         font-size: 1.5rem;
         padding: 0.5rem;
       }
@@ -41,12 +41,13 @@ export class EitCounter extends LitElement {
 
   render() {
     return html`
-      <wired-card>
+      <wired-card elevation="3">
         <slot></slot>
         <p class="parrafo">${this.counter}</p>
         <p>
-          <input id="quantity" type="number" value="1" />
+          <wired-input id="quantity" type="number" value="1"> ></wired-input>
         </p>
+
         <wired-button class="decrement" @click=${this.decrement}>
           Decrementar
         </wired-button>
