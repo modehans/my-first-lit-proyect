@@ -6,6 +6,10 @@ export class TodoList extends LitElement {
       :host {
         display: block;
       }
+      .completed {
+        text-decoration-line: line-through;
+        color: #777;
+      }
     `,
   ];
 
@@ -28,7 +32,12 @@ export class TodoList extends LitElement {
       <h2>To Do</h2>
       <ul>
         ${this._listItems.map((item) => {
-          return html`<li>${item.text}${item.completed ? ' ✅' : ' 👀'}</li>`;
+          return html` <li
+            class=${item.completed ? 'completed' : ''}
+            @click=${this.toggleCompleted}
+          >
+            ${item.text}${item.completed ? ' ✅' : ' 👀'}
+          </li>`;
         })}
       </ul>
       <input
@@ -43,9 +52,7 @@ export class TodoList extends LitElement {
 
   // TODO: Add click handler.
   handleChange(ev) {
-    console.log(ev);
     this.input = ev.target.value;
-    console.log(this.input);
   }
 
   addToDo() {
@@ -54,6 +61,7 @@ export class TodoList extends LitElement {
       { text: this.input, completed: false },
     ];
     this.input = '';
+    //al usar el spread operator, se detecta el cambio y no es necesario hacer this.requestUpdate()
   }
 }
 
