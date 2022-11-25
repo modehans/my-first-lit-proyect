@@ -13,6 +13,9 @@
     Primer proyecto con Lit
   </h1>
   <name-tag></name-tag>
+
+  <enable-input></enable-input>
+
   <eit-counter counter="10">
     <h2>Contador!!!</h2>
   </eit-counter>
@@ -22,6 +25,7 @@
   <button id="reset">Reset</button>
 
   <script src="./components/name-tag.js" type="module"></script>
+  <script src="./components/enable-input.js" type="module"></script>
   <script src="./components/eit-counter.js" type="module"></script>
   <script>document.getElementById('reset').addEventListener('click', function () {
       document.getElementById('counter').counter = 0;
