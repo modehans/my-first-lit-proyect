@@ -33,8 +33,11 @@ export class TodoList extends LitElement {
     this.input = '';
     this.hideCompleted = false;
   }
-  __getClassItem(item) {
-    const classes = { completed: item.completed, todo: !item.completed };
+  _getClassItem(item) {
+    const classes = {
+      completed: item.completed,
+      todo: !item.completed,
+    };
     return classMap(classes);
   }
 
@@ -46,7 +49,7 @@ export class TodoList extends LitElement {
       <ul>
         ${items.map((item) => {
           return html` <li
-            class=${this.__getClassItem(item)}
+            class=${this._getClassItem(item)}
             @click=${() => this.toggleCompleted(item)}
           >
             ${item.text}${item.completed ? ' ✅' : ' 👀'}
@@ -54,12 +57,12 @@ export class TodoList extends LitElement {
         })}
       </ul>
     `;
-    const caughtUpMessage = html` <p>You're all caught up!</p> `;
-    const todosOrMessage = items.length > 0 ? todos : caughtUpMessage;
+    const caughtUpMessage = html` <h3>You're all caught up!</h3> `;
+    const toDosOrMessage = items.length > 0 ? todos : caughtUpMessage;
 
     return html`
       <h2>To Do</h2>
-      ${todosOrMessage}
+      ${toDosOrMessage}
       <input
         @input=${this.handleChange}
         id="newitem"
