@@ -34,7 +34,7 @@ export class TodoList extends LitElement {
         ${this._listItems.map((item) => {
           return html` <li
             class=${item.completed ? 'completed' : ''}
-            @click=${this.toggleCompleted}
+            @click=${() => this.toggleCompleted(item)}
           >
             ${item.text}${item.completed ? ' ✅' : ' 👀'}
           </li>`;
@@ -50,7 +50,11 @@ export class TodoList extends LitElement {
     `;
   }
 
-  // TODO: Add click handler.
+  toggleCompleted(item) {
+    item.completed = !item.completed;
+    this.requestUpdate(); //necesita this.requestUpdate ya que se modifica un valor de un obejto no el objeto en sí por lo que no es reactivo.
+  }
+
   handleChange(ev) {
     this.input = ev.target.value;
   }
