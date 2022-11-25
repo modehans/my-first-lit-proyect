@@ -12,6 +12,9 @@ export class TodoList extends LitElement {
         text-decoration-line: line-through;
         color: #777;
       }
+      .todo {
+        color: purple;
+      }
     `,
   ];
 
@@ -30,6 +33,10 @@ export class TodoList extends LitElement {
     this.input = '';
     this.hideCompleted = false;
   }
+  __getClassItem(item) {
+    const classes = { completed: item.completed, todo: !item.completed };
+    return classMap(classes);
+  }
 
   render() {
     const items = this.hideCompleted
@@ -38,9 +45,8 @@ export class TodoList extends LitElement {
     const todos = html`
       <ul>
         ${items.map((item) => {
-          const classes = { completed: item.completed };
           return html` <li
-            class=${classMap(classes)}
+            class=${this.__getClassItem(item)}
             @click=${() => this.toggleCompleted(item)}
           >
             ${item.text}${item.completed ? ' ✅' : ' 👀'}
