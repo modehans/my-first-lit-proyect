@@ -1,5 +1,7 @@
 import { LitElement, html, css } from 'lit';
 
+import { classMap } from 'lit/directives/class-map.js';
+
 export class TodoList extends LitElement {
   static styles = [
     css`
@@ -32,8 +34,9 @@ export class TodoList extends LitElement {
       <h2>To Do</h2>
       <ul>
         ${this._listItems.map((item) => {
+          const classes = { completed: item.completed };
           return html` <li
-            class=${item.completed ? 'completed' : ''}
+            class=${classMap(classes)}
             @click=${() => this.toggleCompleted(item)}
           >
             ${item.text}${item.completed ? ' ✅' : ' 👀'}
