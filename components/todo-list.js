@@ -18,6 +18,7 @@ export class TodoList extends LitElement {
   static properties = {
     _listItems: { state: true },
     input: { type: String },
+    hideCompleted: { type: Boolean },
   };
 
   constructor() {
@@ -27,13 +28,16 @@ export class TodoList extends LitElement {
       { text: 'Make to-do list', completed: false },
     ];
     this.input = '';
+    this.hideCompleted = false;
   }
 
   render() {
-    return html`
-      <h2>To Do</h2>
+    const items = this.hideCompleted
+      ? this._listItems.filter((item) => !item.completed)
+      : this._listItems;
+    const todos = html`
       <ul>
-        ${this._listItems.map((item) => {
+        ${items.map((item) => {
           const classes = { completed: item.completed };
           return html` <li
             class=${classMap(classes)}
@@ -43,6 +47,13 @@ export class TodoList extends LitElement {
           </li>`;
         })}
       </ul>
+    `;
+    const caughtUpMessage = html` <p>You're all caught up!</p> `;
+    const todosOrMessage = items.length > 0 ? todos : caughtUpMessage;
+
+    return html`
+      <h2>To Do</h2>
+      ${todosOrMessage}
       <input
         @input=${this.handleChange}
         id="newitem"
@@ -50,7 +61,19 @@ export class TodoList extends LitElement {
         .value=${this.input}
       />
       <button @click=${this.addToDo}>Add</button>
+      <label>
+        <input
+          type="checkbox"
+          @change=${this.setHideCompleted}
+          ?checked=${this.hideCompleted}
+        />
+        Hide completed
+      </label>
     `;
+  }
+
+  setHideCompleted(ev) {
+    this.hideCompleted = ev.target.checked;
   }
 
   toggleCompleted(item) {
